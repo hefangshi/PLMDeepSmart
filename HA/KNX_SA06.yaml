@@ -1,0 +1,66 @@
+###################################################################
+# 版权所有 2023 尊贵的幸福里业主
+#  适用于南A-06栋
+# 
+# 使用方法
+#  HA中添加集成KNX
+#  configuration.yaml中添加 knx: !include <本文件名字>
+
+light:
+    - name: "主卫筒灯"
+      address: "1/0/37"
+      state_address: "1/0/37"
+    - name: "主卫灯带灯"
+      address: "1/0/36"
+      state_address: "1/0/36"
+    - name: "主卧衣柜灯"
+      address: "1/0/35"
+      state_address: "1/0/35"
+    - name: "主卧筒灯"
+      address: "1/0/34"
+      state_address: "1/0/34"
+    - name: "主卧灯带灯"
+      address: "1/0/33"
+      state_address: "1/0/33"
+    - name: "主卧主灯"
+      address: "1/0/24"
+      state_address: "1/0/24"
+    - name: "客厅主灯"
+      address: "1/0/23"
+      state_address: "1/0/23"
+    - name: "客厅灯带灯"
+      address: "1/0/22"
+      state_address: "1/0/22"
+    - name: "客厅筒灯"
+      address: "1/0/21"
+      state_address: "1/0/21"
+    - name: "餐厅主灯"
+      address: "1/0/20"
+      state_address: "1/0/20"
+    - name: "餐厅筒灯"
+      address: "1/0/19"
+      state_address: "1/0/19"
+    - name: "玄关灯带"
+      address: "1/0/18"
+      state_address: "1/0/18"
+    - name: "玄关筒灯"
+      address: "1/0/17"
+      state_address: "1/0/17"
+
+cover:
+    - name: "客厅布帘"
+      move_long_address: "2/0/65"
+      move_short_address: "2/0/65"
+      stop_address: "2/0/65"
+      position_address: "0/0/0"
+      position_state_address: "0/0/0"
+      travelling_time_down: 25
+      travelling_time_up: 25
+    - name: "客厅纱帘"
+      move_long_address: "2/0/66"
+      move_short_address: "2/0/66"
+      stop_address: "2/0/66"
+      position_address: "0/0/0"
+      position_state_address: "0/0/0"
+      travelling_time_down: 25
+      travelling_time_up: 25

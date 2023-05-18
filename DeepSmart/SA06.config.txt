@@ -1,0 +1,353 @@
+local addr_in_1 = "0/0/17"
+local addr_in_2 = "0/0/18"
+local addr_in_3 = "0/0/19"
+local addr_in_4 = "0/0/20"
+local addr_out_11 = "1/0/17"
+local addr_out_12 = "1/0/18"
+local addr_out_13 = "1/0/19"
+local addr_out_14 = "1/0/20"
+local addr_out_15 = "1/0/21"
+local addr_out_16 = "1/0/22"
+local addr_out_17 = "1/0/23"
+local addr_out_18 = "1/0/24"
+local addr_out_21 = "1/0/33"
+local addr_out_22 = "1/0/34"
+local addr_out_23 = "1/0/35"
+local addr_out_24 = "1/0/36"
+local addr_out_25 = "1/0/37"
+local addr_out_26 = "1/0/38"
+local addr_out_27 = "1/0/39"
+local addr_out_28 = "1/0/40"
+local addr_CTout_41 = "2/0/65"
+local addr_CTout_42 = "2/0/66"
+local addr_CTout_43 = "2/0/67"
+local addr_CTout_44 = "2/0/68"
+
+
+mode_val_1=0;
+mode_val_2=0; 
+mode_val_3=0; 
+mode_val_4=0;
+mode_val_5=0;
+mode_val_6=0; 
+ 
+
+----------trigger function-----beijing-A2BZCCY-----
+function trigger_func1()
+     if GETVAL(addr_in_1) == 1 then
+SEND(addr_out_11 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_12 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_13 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_14 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_15 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_16 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_17 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_28 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_CTout_41 , "1byte", 2)
+MSLEEP(500)
+SEND(addr_CTout_42 , "1byte", 2)
+MSLEEP(500)
+SEND(addr_CTout_43 , "1byte", 2)
+MSLEEP(500)
+SEND(addr_CTout_44 , "1byte", 2)
+MSLEEP(500)
+
+
+
+
+     end  
+         
+     if GETVAL(addr_in_1) == 2 then
+         
+SEND(addr_out_11 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_12 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_13 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_14 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_15 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_16 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_17 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_18 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_21 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_22 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_23 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_24 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_25 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_28 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_CTout_41 , "1byte", 1)
+MSLEEP(500)
+SEND(addr_CTout_42 , "1byte", 1)
+MSLEEP(500)
+SEND(addr_CTout_43 , "1byte", 1)
+MSLEEP(500)
+SEND(addr_CTout_44 , "1byte", 1)
+MSLEEP(500)
+
+
+
+
+
+     end 
+     if GETVAL(addr_in_1) == 3 then
+         
+SEND(addr_out_11 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_12 , "1bit", 1)
+MSLEEP(100)
+
+
+     end 
+     if GETVAL(addr_in_1) == 4 then
+         
+SEND(addr_out_11 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_12 , "1bit", 0)
+MSLEEP(100)
+
+
+       end  
+            if GETVAL(addr_in_1) == 5 then
+         
+          SEND(addr_out_13 , "1bit", 1)
+          MSLEEP(100)
+          SEND(addr_out_14 , "1bit", 1)
+          MSLEEP(100)
+		
+
+        end  
+            if GETVAL(addr_in_1) == 6 then
+         
+          SEND(addr_out_13 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_14 , "1bit", 0)
+          MSLEEP(100)
+		
+
+       end  
+            if GETVAL(addr_in_1) == 7 then
+         
+          SEND(addr_out_13 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_14 , "1bit", 1)
+          MSLEEP(100)
+		
+
+       end  
+            if GETVAL(addr_in_1) == 8 then
+         
+          SEND(addr_out_13 , "1bit", 1)
+          MSLEEP(100)
+          SEND(addr_out_14 , "1bit", 0)
+          MSLEEP(100)
+		
+
+     end
+          if GETVAL(addr_in_1) == 9 then
+         
+SEND(addr_out_15 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_16 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_17 , "1bit", 1)
+MSLEEP(100)
+
+
+     end
+               if GETVAL(addr_in_1) == 10 then
+         
+SEND(addr_out_15 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_16 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_17 , "1bit", 0)
+MSLEEP(100)
+
+
+     end
+               if GETVAL(addr_in_1) == 11 then
+         
+SEND(addr_out_15 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_16 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_17 , "1bit", 1)
+MSLEEP(100)
+
+
+     end 
+               if GETVAL(addr_in_1) == 12 then
+         
+SEND(addr_out_15 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_16 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_17 , "1bit", 0)
+MSLEEP(100)
+
+
+     end   
+
+
+
+end
+gFunc[addr_in_1]=trigger_func1
+
+function trigger_func2()
+    if GETVAL(addr_in_2) == 1 then
+         
+
+SEND(addr_out_18 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_21 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_22 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_23 , "1bit", 1)
+MSLEEP(100)
+
+
+     end  
+    if GETVAL(addr_in_2) == 2 then
+         
+
+SEND(addr_out_18 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_21 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_22 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_23 , "1bit", 0)
+MSLEEP(100)
+
+
+     end
+     if GETVAL(addr_in_2) == 3 then
+         
+SEND(addr_out_18 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_21 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_22 , "1bit", 1)
+MSLEEP(100)
+
+      
+       end  
+     if GETVAL(addr_in_2) == 4 then
+         
+SEND(addr_out_18 , "1bit", 0)
+MSLEEP(100)
+SEND(addr_out_21 , "1bit", 1)
+MSLEEP(100)
+SEND(addr_out_22 , "1bit", 0)
+MSLEEP(100)
+      
+       end  
+            if GETVAL(addr_in_2) == 5 then
+         
+          SEND(addr_out_24 , "1bit", 1)
+          MSLEEP(100)
+          SEND(addr_out_25 , "1bit", 1)
+          MSLEEP(100)
+          
+      
+       end
+            if GETVAL(addr_in_2) == 6 then
+         
+          SEND(addr_out_24 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_25 , "1bit", 0)
+          MSLEEP(100)
+         
+       end
+
+      if GETVAL(addr_in_2) == 7 and GETTYPE(addr_in_2) == 1 then 
+				if (GETVAL(addr_out_25) == 0) then
+						mode_val_1 =1;
+				else
+						mode_val_1 =0;
+				end
+				SEND(addr_out_25,"1bit",mode_val_1);
+		
+
+     end 
+     if GETVAL(addr_in_2) == 8 and GETTYPE(addr_in_2) == 1 then 
+				if (GETVAL(addr_out_24) == 0) then
+						mode_val_2 =1;
+				else
+						mode_val_2 =0;
+				end
+				SEND(addr_out_24,"1bit",mode_val_2);
+		
+
+     end
+            if GETVAL(addr_in_2) == 10 then
+         
+          SEND(addr_out_24 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_25 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_26 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_27 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_28 , "1bit", 0)
+          MSLEEP(100)
+         
+       end
+           if GETVAL(addr_in_2) == 11 then
+         
+          SEND(addr_out_21 , "1bit", 1)
+          MSLEEP(100)
+          SEND(addr_CTout_43 , "1byte", 1)
+          MSLEEP(500)
+          SEND(addr_CTout_44 , "1byte", 1)
+          MSLEEP(500)
+         
+       end
+                  if GETVAL(addr_in_2) == 12 then
+         
+          SEND(addr_out_18 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_21 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_22 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_23 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_24 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_out_25 , "1bit", 0)
+          MSLEEP(100)
+          SEND(addr_CTout_43 , "1byte", 2)
+          MSLEEP(500)
+          SEND(addr_CTout_44 , "1byte", 2)
+          MSLEEP(500)
+         
+       end
+
+end
+
+
+
+gFunc[addr_in_2]=trigger_func2
