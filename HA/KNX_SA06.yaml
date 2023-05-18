@@ -53,11 +53,18 @@ fan:
       address: "14/3/1"
       state_address: "14/3/1"
       max_step: 3
+    - name: "客厅空调风速"
+      address: "12/3/3"
+      state_address: "12/3/131"
+      max_step: 5
 
 switch:
     - name: "新风开关"
       address: "14/1/1"
       state_address: "14/1/1"
+    - name: "客厅空调开关"
+      address: "12/1/3"
+      state_address: "12/1/131"
 
 sensor:
     - name: "湿度"
@@ -81,27 +88,44 @@ sensor:
       type: 2byte_float
       sync_state: every 30
 
-cover:
+select:
     - name: "客厅布帘"
-      move_long_address: "2/0/65"
-      move_short_address: "2/0/65"
-      stop_address: "2/0/65"
-      position_address: "0/0/0"
-      position_state_address: "0/0/0"
-      travelling_time_down: 25
-      travelling_time_up: 25
-    - name: "客厅纱帘"
-      move_long_address: "2/0/66"
-      move_short_address: "2/0/66"
-      stop_address: "2/0/66"
-      position_address: "0/0/0"
-      position_state_address: "0/0/0"
-      travelling_time_down: 25
-      travelling_time_up: 25
+      address: "2/0/65"
+      payload_length: 1
+      options:
+        - option: "开"
+          payload: 1
+        - option: "合"
+          payload: 2
+        - option: "停"
+          payload: 0
+    - name: "客厅空调模式"
+      address: "12/2/3"
+      state_address: "12/2/131"
+      payload_length: 1
+      options:
+        - option: "自动"
+          payload: 2
+        - option: "制冷"
+          payload: 3
+        - option: "制热"
+          payload: 1
+        - option: "除湿"
+          payload: 0
+        - option: "送风"
+          payload: 9
 
 button:
     - name: "玄关按键"
       address: "0/0/17"
     - name: "主卧按键"
       address: "0/0/18"
+
+climate:
+    - name: "客厅空调"
+      temperature_address: "12/5/131"
+      target_temperature_address: "12/4/3"
+      target_temperature_state_address: "12/4/131"
+      min_temp: 18.0
+      max_temp: 28.0
   
