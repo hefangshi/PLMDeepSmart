@@ -8,6 +8,15 @@
 #  重启HA
 
 light:
+    - name: "总控灯3"  # 非智能灯都接在这里
+      address: "1/0/40"
+      state_address: "1/0/40"
+    - name: "总控灯2" # 悬空未使用
+      address: "1/0/39"
+      state_address: "1/0/39"
+    - name: "总控灯1" # 悬空未使用
+      address: "1/0/38"
+      state_address: "1/0/38"
     - name: "主卫筒灯"
       address: "1/0/37"
       state_address: "1/0/37"
