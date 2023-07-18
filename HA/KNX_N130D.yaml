@@ -1,0 +1,421 @@
+###################################################################
+# 版权所有 2023 尊贵的幸福里业主
+
+# 130D版本调整
+#  1、基于 KNX-SA.yaml 进行调整
+#  2、0702 至今陆续调整，适用于北区 130D 户型
+#  3、其他户型如需使用需要根据实际情况进行调整
+#  4、增加窗帘通过开关控制，需要配合 DeepWiser 后台的「N130D」对应配置使用
+
+# 使用方法
+#  HA 中添加集成 KNX
+#  configuration.yaml 中添加 knx: !include <本文件名字>，如果自建文件夹请加上路径
+#  重启 HA
+
+
+light:
+    # 玄关
+    - name: "玄关筒灯"
+      address: "1/0/17"
+      state_address: "1/0/17"
+    - name: "玄关灯带"
+      address: "1/0/18"
+      state_address: "1/0/18"
+    - name: "门廊灯"
+      address: "1/0/19"
+      state_address: "1/0/19"
+
+    # 餐厅
+    - name: "餐厅主灯"
+      address: "1/0/23"
+      state_address: "1/0/23"
+
+    # 客厅 
+    - name: "客厅筒灯"
+      address: "1/0/20"
+      state_address: "1/0/20"
+    - name: "客厅灯带"
+      address: "1/0/21"
+      state_address: "1/0/21"
+    - name: "客厅主灯"
+      address: "1/0/22"
+      state_address: "1/0/22"
+
+    # 主卧
+    - name: "主卧筒灯"
+      address: "1/0/24"
+      state_address: "1/0/24"
+    - name: "主卧灯带"
+      address: "1/0/33"
+      state_address: "1/0/33"
+    - name: "主卧主灯"
+      address: "1/0/34"
+      state_address: "1/0/34"
+
+    # 主卫
+    - name: "主卫筒灯"
+      address: "1/0/35"
+      state_address: "1/0/35"
+    - name: "主卫灯带"
+      address: "1/0/36"
+      state_address: "1/0/36"
+
+    # 次卧
+    - name: "次卧筒灯"
+      address: "1/0/37"
+      state_address: "1/0/37"
+    - name: "次卧主灯"
+      address: "1/0/38"
+      state_address: "1/0/38"
+    - name: "次卧灯带"
+      address: "1/0/39"
+      state_address: "1/0/39"
+
+    # 厨房/北卧/储藏室，非智能开关
+    - name: "非智能开关"
+      address: "1/0/40"
+      state_address: "1/0/40"
+
+
+fan:
+    - name: "新风风速"
+      address: "14/3/1"
+      state_address: "14/3/1"
+      max_step: 3
+
+
+switch:
+    - name: "新风开关"
+      address: "14/1/1"
+      state_address: "14/1/1"
+    
+    # 窗帘通过调整应用配置，增加新的组地址用开关控制
+    - name: "客厅布帘"
+      address: "2/0/15"
+      state_address: "2/0/15"
+    - name: "客厅纱帘"
+      address: "2/0/16"
+      state_address: "2/0/16"
+    - name: "主卧布帘"
+      address: "2/0/17"
+      state_address: "2/0/17"
+    - name: "主卧纱帘"
+      address: "2/0/18"
+      state_address: "2/0/18"
+    - name: "次卧布帘"
+      address: "2/0/19"
+      state_address: "2/0/19"
+    - name: "次卧纱帘"
+      address: "2/0/20"
+      state_address: "2/0/20"
+
+# 传感器的数据来源于新风
+sensor:
+    - name: "空气质量"
+      state_address: "6/1/81"
+      type: 2byte_float
+      sync_state: every 30
+    - name: "PM2.5"
+      state_address: "6/1/82"
+      type: 2byte_float
+      sync_state: every 30
+    - name: "二氧化碳"
+      state_address: "6/2/81"
+      type: 2byte_float
+      sync_state: every 30
+    - name: "甲醛"
+      state_address: "6/2/82"
+      type: 2byte_float
+      sync_state: every 30
+    - name: "TVOC"
+      state_address: "6/3/81"
+      type: 2byte_float
+      sync_state: every 30
+    - name: "温度"
+      state_address: "6/5/81"
+      type: 2byte_float
+      sync_state: every 30
+    - name: "湿度"
+      state_address: "6/6/81"
+      type: 2byte_float
+      sync_state: every 30
+
+
+# 开发商的空调风速、窗帘控制不是KNX标准的，因此挪到select实体
+select:
+    - name: "回家离家模式"
+      address: "0/0/17"
+      payload_length: 1
+      options:
+        - option: "回家模式"
+          payload: 1
+        - option: "离家模式"
+          payload: 2
+
+    - name: "客厅空调风速"
+      address: "12/3/2"
+      state_address: "12/3/130"
+      payload_length: 1
+      options:
+        - option: "自动"
+          payload: 0
+        - option: "低"
+          payload: 1
+        - option: "中"
+          payload: 3
+        - option: "高"
+          payload: 5
+    - name: "餐厅空调风速"
+      address: "12/3/3"
+      state_address: "12/3/131"
+      payload_length: 1
+      options:
+        - option: "自动"
+          payload: 0
+        - option: "低"
+          payload: 1
+        - option: "中"
+          payload: 3
+        - option: "高"
+          payload: 5
+    - name: "主卧空调风速"
+      address: "12/3/5"
+      state_address: "12/3/133"
+      payload_length: 1
+      options:
+        - option: "自动"
+          payload: 0
+        - option: "低"
+          payload: 1
+        - option: "中"
+          payload: 3
+        - option: "高"
+          payload: 5
+    - name: "次卧空调风速"
+      address: "12/3/4"
+      state_address: "12/3/132"
+      payload_length: 1
+      options:
+        - option: "自动"
+          payload: 0
+        - option: "低"
+          payload: 1
+        - option: "中"
+          payload: 3
+        - option: "高"
+          payload: 5
+    - name: "书房空调风速"
+      address: "12/3/1"
+      state_address: "12/3/129"
+      payload_length: 1
+      options:
+        - option: "自动"
+          payload: 0
+        - option: "低"
+          payload: 1
+        - option: "中"
+          payload: 3
+        - option: "高"
+          payload: 5
+
+    # 读不到窗帘状态，插座不好用，窗帘改成用 button 控制
+    # - name: "客厅布帘"
+    #   address: "2/0/65"
+    #   payload_length: 1
+    #   options:
+    #     - option: "开"
+    #       payload: 1
+    #     - option: "合"
+    #       payload: 2
+    #     - option: "停"
+    #       payload: 0
+    # - name: "客厅纱帘"
+    #   address: "2/0/66"
+    #   payload_length: 1
+    #   options:
+    #     - option: "开"
+    #       payload: 1
+    #     - option: "合"
+    #       payload: 2
+    #     - option: "停"
+    #       payload: 0
+    # - name: "主卧布帘"
+    #   address: "2/0/67"
+    #   payload_length: 1
+    #   options:
+    #     - option: "开"
+    #       payload: 1
+    #     - option: "合"
+    #       payload: 2
+    #     - option: "停"
+    #       payload: 0
+    # - name: "主卧纱帘"
+    #   address: "2/0/68"
+    #   payload_length: 1
+    #   options:
+    #     - option: "开"
+    #       payload: 1
+    #     - option: "合"
+    #       payload: 2
+    #     - option: "停"
+    #       payload: 0
+    # - name: "次卧布帘"
+    #   address: "2/0/69"
+    #   payload_length: 1
+    #   options:
+    #     - option: "开"
+    #       payload: 1
+    #     - option: "合"
+    #       payload: 2
+    #     - option: "停"
+    #       payload: 0
+    # - name: "次卧纱帘"
+    #   address: "2/0/70"
+    #   payload_length: 1
+    #   options:
+    #     - option: "开"
+    #       payload: 1
+    #     - option: "合"
+    #       payload: 2
+    #     - option: "停"
+    #       payload: 0
+
+
+button:
+    # 客厅面板
+    - name: "回家模式"
+      address: "0/0/17"
+      payload: 1
+    - name: "离家模式"
+      address: "0/0/17"
+      payload: 2
+
+    # 主卧面板
+    - name: "主卧明亮"
+      address: "0/0/18"
+      payload: 1
+    - name: "主卧离开"
+      address: "0/0/18"
+      payload: 2
+    - name: "主卧休闲"
+      address: "0/0/18"
+      payload: 3
+    - name: "主卧看电视"
+      address: "0/0/18"
+      payload: 4
+    - name: "主卫明亮"
+      address: "0/0/18"
+      payload: 5
+    - name: "主卫离开"
+      address: "0/0/18"
+      payload: 6
+
+    # 次卧面板
+    - name: "次卧明亮"
+      address: "0/0/19"
+      payload: 1
+    - name: "次卧离开"
+      address: "0/0/19"
+      payload: 2
+    - name: "次卧休闲"
+      address: "0/0/19"
+      payload: 3
+    - name: "次卧看电视"
+      address: "0/0/19"
+      payload: 4
+
+    # 用按键控制窗帘
+    - name: "关客厅布帘"
+      address: "2/0/65"
+      type: 1byte_unsigned
+      value: 2
+    - name: "开客厅布帘"
+      address: "2/0/65"
+      type: 1byte_unsigned
+      value: 1
+    - name: "关客厅纱帘"
+      address: "2/0/66"
+      type: 1byte_unsigned
+      value: 2
+    - name: "开客厅纱帘"
+      address: "2/0/66"
+      type: 1byte_unsigned
+      value: 1
+
+    - name: "关主卧布帘"
+      address: "2/0/67"
+      type: 1byte_unsigned
+      value: 2
+    - name: "开主卧布帘"
+      address: "2/0/67"
+      type: 1byte_unsigned
+      value: 1
+    - name: "关主卧纱帘"
+      address: "2/0/68"
+      type: 1byte_unsigned
+      value: 2
+    - name: "开主卧纱帘"
+      address: "2/0/68"
+      type: 1byte_unsigned
+      value: 1
+
+    - name: "关次卧布帘"
+      address: "2/0/69"
+      type: 1byte_unsigned
+      value: 2
+    - name: "开次卧布帘"
+      address: "2/0/69"
+      type: 1byte_unsigned
+      value: 1
+    - name: "关次卧纱帘"
+      address: "2/0/70"
+      type: 1byte_unsigned
+      value: 2
+    - name: "开次卧纱帘"
+      address: "2/0/70"
+      type: 1byte_unsigned
+      value: 1
+
+
+# 空调控制
+climate:
+    - name: "客厅空调"
+      temperature_address: "12/5/130"
+      target_temperature_address: "12/4/2"
+      target_temperature_state_address: "12/4/130"
+      on_off_address: "12/1/2"
+      on_off_state_address: "12/1/130"
+      controller_mode_address: "12/2/2"
+      controller_mode_state_address: "12/2/130"
+    - name: "餐厅空调"
+      temperature_address: "12/5/131"
+      target_temperature_address: "12/4/3"
+      target_temperature_state_address: "12/4/131"
+      on_off_address: "12/1/3"
+      on_off_state_address: "12/1/131"
+      controller_mode_address: "12/2/3"
+      controller_mode_state_address: "12/2/131"
+    - name: "主卧空调"
+      temperature_address: "12/5/133"
+      target_temperature_address: "12/4/5"
+      target_temperature_state_address: "12/4/133"
+      on_off_address: "12/1/5"
+      on_off_state_address: "12/1/133"
+      controller_mode_address: "12/2/5"
+      controller_mode_state_address: "12/2/133"
+    - name: "次卧空调"
+      temperature_address: "12/5/132"
+      target_temperature_address: "12/4/4"
+      target_temperature_state_address: "12/4/132"
+      on_off_address: "12/1/4"
+      on_off_state_address: "12/1/132"
+      controller_mode_address: "12/2/4"
+      controller_mode_state_address: "12/2/132"
+    - name: "书房空调"
+      temperature_address: "12/5/129"
+      target_temperature_address: "12/4/1"
+      target_temperature_state_address: "12/4/129"
+      on_off_address: "12/1/1"
+      on_off_state_address: "12/1/129"
+      controller_mode_address: "12/2/1"
+      controller_mode_state_address: "12/2/129"

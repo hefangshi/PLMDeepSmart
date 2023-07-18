@@ -1,0 +1,455 @@
+----北区130D调整后的配置，非原始配置----
+----1/将窗帘、非智能开关移除回家离家；2/增加窗帘映射组地址；3/其他更新，自己探索----
+
+local addr_in_1 = "0/0/17" ---- 客厅面板模式
+local addr_in_2 = "0/0/18" ---- 主卧面板模式
+local addr_in_3 = "0/0/19" ---- 次卧面板模式
+local addr_in_4 = "0/0/20" ---- # 不知道，大户型才有的面板模式
+
+local addr_in_5 = "0/0/75" ---- 客厅布帘映射
+local addr_in_6 = "0/0/76" ---- 客厅纱帘映射
+local addr_in_7 = "0/0/77" ---- 主卧布帘映射
+local addr_in_8 = "0/0/78" ---- 主卧纱帘映射
+local addr_in_9 = "0/0/79" ---- 次卧布帘映射
+local addr_in_10 = "0/0/80" ---- 次卧纱帘映射
+
+local addr_out_11 = "1/0/17" ---- 玄关筒灯
+local addr_out_12 = "1/0/18" ---- 玄关灯带
+local addr_out_13 = "1/0/19" ---- 餐厅筒灯，门廊附近的
+local addr_out_14 = "1/0/20" ---- 客厅筒灯
+local addr_out_15 = "1/0/21" ---- 客厅灯带
+local addr_out_16 = "1/0/22" ---- 客厅主灯
+local addr_out_17 = "1/0/23" ---- 餐厅主灯
+local addr_out_18 = "1/0/24" ---- 主卧筒灯
+local addr_out_21 = "1/0/33" ---- 主卧灯带
+local addr_out_22 = "1/0/34" ---- 主卧主灯
+local addr_out_23 = "1/0/35" ---- 主卫筒灯
+local addr_out_24 = "1/0/36" ---- 主卫灯带
+local addr_out_25 = "1/0/37" ---- 次卧筒灯
+local addr_out_26 = "1/0/38" ---- 次卧主灯
+local addr_out_27 = "1/0/39" ---- 次卧灯带
+local addr_out_28 = "1/0/40" ---- 开关控制的灯
+
+local addr_CTout_41 = "2/0/65" ---- 客厅布帘
+local addr_CTout_42 = "2/0/66" ---- 客厅纱帘
+local addr_CTout_43 = "2/0/67" ---- 主卧布帘
+local addr_CTout_44 = "2/0/68" ---- 主卧纱帘
+local addr_CTout_45 = "2/0/69" ---- 次卧布帘
+local addr_CTout_46 = "2/0/70" ---- 次卧纱帘
+
+---------定义变量----------
+mode_val_1=0;
+mode_val_2=0; 
+mode_val_3=0; ---- 没用到
+mode_val_4=0; ---- 没用到
+mode_val_5=0; ---- 没用到
+mode_val_6=0; ---- 没用到
+
+
+----------trigger function-----beijing-D-----
+function trigger_func1() ---- 客厅的面板控制
+    if GETVAL(addr_in_1) == 1 then ---- 回家模式
+        SEND(addr_out_11 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_12 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_13 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_14 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_15 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_16 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_17 , "1bit", 1)
+        MSLEEP(100)
+    end
+    
+    if GETVAL(addr_in_1) == 2 then ---- 离家模式
+        SEND(addr_out_11 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_12 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_13 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_14 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_15 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_16 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_17 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_18 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_21 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_22 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_23 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_24 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_25 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_26 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_27 , "1bit", 0)
+        MSLEEP(100)
+    end
+    
+    if GETVAL(addr_in_1) == 3 then ---- 玄关明亮
+        SEND(addr_out_11 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_12 , "1bit", 1)
+        MSLEEP(100)
+    end
+    
+    if GETVAL(addr_in_1) == 4 then ---- 玄关离开
+        SEND(addr_out_11 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_12 , "1bit", 0)
+        MSLEEP(100)
+    end  
+    
+    if GETVAL(addr_in_1) == 5 then ---- 开了客餐厅灯，不知道什么模式
+        SEND(addr_out_13 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_15 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_16 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_17 , "1bit", 1)
+        MSLEEP(100)
+    end
+    
+    if GETVAL(addr_in_1) == 6 then ---- 关了客餐厅灯，不知道什么模式
+        SEND(addr_out_13 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_15 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_16 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_17 , "1bit", 0)
+        MSLEEP(100)
+    end  
+    
+    if GETVAL(addr_in_1) == 7 then ---- 餐厅开&客厅关，不知道什么模式
+        SEND(addr_out_13 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_15 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_16 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_17 , "1bit", 1)
+        MSLEEP(100)
+    end  
+    
+    if GETVAL(addr_in_1) == 8 then ---- 只开了客厅灯带灯，不知道什么模式
+        SEND(addr_out_13 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_15 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_16 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_17 , "1bit", 0)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_1) == 9 then ---- 开了几个客厅灯，但是没开全，不知道什么模式
+        SEND(addr_out_13 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_14 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_15 , "1bit", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_1) == 10 then ---- 关了几个客厅灯，但是没关全，不知道什么模式
+        SEND(addr_out_13 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_14 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_15 , "1bit", 0)
+        MSLEEP(100)
+    end
+    
+    if GETVAL(addr_in_1) == 11 then ---- 不知道什么模式
+        SEND(addr_out_13 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_14 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_15 , "1bit", 1)
+        MSLEEP(100)
+    end 
+
+    if GETVAL(addr_in_1) == 12 then ---- 不知道什么模式
+        SEND(addr_out_13 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_14 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_15 , "1bit", 0)
+        MSLEEP(100)
+    end   
+end
+gFunc[addr_in_1]=trigger_func1
+
+function trigger_func2() ---- 主卧面板控制
+    if GETVAL(addr_in_2) == 1 then ----主卧，明亮模式 / 打开全部主卧灯
+        SEND(addr_out_18 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_21 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_22 , "1bit", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_2) == 2 then ---- 主卧，离开模式 / 关闭全部主卧灯
+        SEND(addr_out_18 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_21 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_22 , "1bit", 0)
+        MSLEEP(100)
+    end
+    
+    if GETVAL(addr_in_2) == 3 then ---- 主卧，休闲模式 / 不开主卧灯带灯
+        SEND(addr_out_18 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_21 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_22 , "1bit", 1)
+        MSLEEP(100)
+    end  
+
+    if GETVAL(addr_in_2) == 4 then ---- 主卧，电视模式 / 只开主卧灯带灯
+        SEND(addr_out_18 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_21 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_22 , "1bit", 0)
+        MSLEEP(100)
+    end  
+
+    if GETVAL(addr_in_2) == 5 then ---- 主卫，明亮模式 / 打开全部主卫灯
+        SEND(addr_out_23 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_24 , "1bit", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_2) == 6 then ---- 主卫，离开模式 / 关闭全部主卫灯
+        SEND(addr_out_23 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_24 , "1bit", 0)
+        MSLEEP(100)
+    end
+
+    
+    if GETVAL(addr_in_2) == 7 and GETTYPE(addr_in_2) == 1 then ---- 主卫灯带如果开着就关上，关着就打开，不知道什么模式
+        if (GETVAL(addr_out_24) == 0) then
+            mode_val_1 =1;
+        else
+            mode_val_1 =0;
+        end
+        SEND(addr_out_24,"1bit",mode_val_1);
+     end 
+    
+    
+    if GETVAL(addr_in_2) == 8 and GETTYPE(addr_in_2) == 1 then ---- 主卫筒灯如果开着就关上，关着就打开，不知道什么模式
+        if (GETVAL(addr_out_23) == 0) then
+            mode_val_2 =1;
+        else
+            mode_val_2 =0;
+        end
+        SEND(addr_out_23,"1bit",mode_val_2);
+    end
+
+    
+    if GETVAL(addr_in_2) == 10 then ----关闭了主卧灯带和次卧所有灯，不知道什么模式
+        SEND(addr_out_24 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_25 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_26 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_27 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_28 , "1bit", 0)
+        MSLEEP(100)
+    end
+
+    
+    if GETVAL(addr_in_2) == 11 then ---- 开了主卧灯带灯，开了主卧窗帘，不知道什么模式
+        SEND(addr_out_21 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_CTout_43 , "1byte", 1)
+        MSLEEP(500)
+        SEND(addr_CTout_44 , "1byte", 1)
+        MSLEEP(500)
+    end
+
+    
+    if GETVAL(addr_in_2) == 12 then ---- 关了主卧所有灯，关闭了主卧窗帘，不知道什么模式
+        SEND(addr_out_18 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_21 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_22 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_23 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_24 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_CTout_43 , "1byte", 2)
+        MSLEEP(500)
+        SEND(addr_CTout_44 , "1byte", 2)
+        MSLEEP(500)
+    end
+end
+gFunc[addr_in_2]=trigger_func2
+
+
+function trigger_func3() ---- 次卧的面板控制
+    
+    if GETVAL(addr_in_3) == 1 then---- 次卧，明亮模式 / 开启次卧所有灯光
+        SEND(addr_out_25 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_26 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_27 , "1bit", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_3) == 2 then ---- 次卧，离开模式 / 关闭次卧所有灯光
+        SEND(addr_out_25 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_26 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_27 , "1bit", 0)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_3) == 3 then ----次卧，休闲模式 / 开了次卧主灯筒灯，关闭灯带灯
+        SEND(addr_out_25 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_26 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_out_27 , "1bit", 0)
+        MSLEEP(100)
+    end
+
+    
+    if GETVAL(addr_in_3) == 4 then ----次卧电视模式 / 关了次卧主灯筒灯，开了灯带灯
+        SEND(addr_out_25 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_26 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_27 , "1bit", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_3) == 7 then ---- 开次卧灯，开窗帘，不知道什么模式
+        SEND(addr_out_27 , "1bit", 1)
+        MSLEEP(100)
+        SEND(addr_CTout_45 , "1byte", 1)
+        MSLEEP(500)
+        SEND(addr_CTout_46 , "1byte", 1)
+        MSLEEP(500)
+    end
+
+    if GETVAL(addr_in_3) == 8 then ----关闭所有灯，关窗帘，不知道什么模式
+        SEND(addr_out_25 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_26 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_out_27 , "1bit", 0)
+        MSLEEP(100)
+        SEND(addr_CTout_45 , "1byte", 2)
+        MSLEEP(500)
+        SEND(addr_CTout_46 , "1byte", 2)
+        MSLEEP(500)
+    end
+end
+gFunc[addr_in_3]=trigger_func3
+
+
+----窗帘单独定义函数解决----
+function trigger_func5() ---- 客厅布帘
+    if GETVAL(addr_in_5) == 1 then ---- 窗帘开
+        SEND(addr_CTout_41 , "1byte", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_5) == 0 then ---- 窗帘关
+        SEND(addr_CTout_41 , "1byte", 2)
+        MSLEEP(100)
+    end
+end
+gFunc[addr_in_5]=trigger_func5
+
+function trigger_func6() ---- 客厅纱帘
+    if GETVAL(addr_in_6) == 1 then ---- 窗帘开
+        SEND(addr_CTout_42 , "1byte", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_6) == 0 then ---- 窗帘关
+        SEND(addr_CTout_42 , "1byte", 2)
+        MSLEEP(100)
+    end
+end
+gFunc[addr_in_6]=trigger_func6
+
+function trigger_func7() ---- 客厅纱帘
+    if GETVAL(addr_in_7) == 1 then ---- 窗帘开
+        SEND(addr_CTout_43 , "1byte", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_7) == 0 then ---- 窗帘关
+        SEND(addr_CTout_43 , "1byte", 2)
+        MSLEEP(100)
+    end
+end
+gFunc[addr_in_7]=trigger_func7
+
+function trigger_func8() ---- 主卧纱帘
+    if GETVAL(addr_in_8) == 1 then ----窗帘开
+        SEND(addr_CTout_44 , "1byte", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_8) == 0 then ----窗帘关
+        SEND(addr_CTout_44 , "1byte", 2)
+        MSLEEP(100)
+    end
+end
+gFunc[addr_in_8]=trigger_func8
+
+function trigger_func9() ----次卧布帘
+    if GETVAL(addr_in_9) == 1 then ---- 窗帘开
+        SEND(addr_CTout_45 , "1byte", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_9) == 0 then ---- 窗帘关
+        SEND(addr_CTout_45 , "1byte", 2)
+        MSLEEP(100)
+    end
+end
+gFunc[addr_in_9]=trigger_func9
+
+
+function trigger_func10() ----次卧纱帘
+    if GETVAL(addr_in_10) == 1 then ---- 窗帘开
+        SEND(addr_CTout_46 , "1byte", 1)
+        MSLEEP(100)
+    end
+
+    if GETVAL(addr_in_10) == 0 then ---- 窗帘关
+        SEND(addr_CTout_46 , "1byte", 2)
+        MSLEEP(100)
+    end
+end
+gFunc[addr_in_10]=trigger_func10
