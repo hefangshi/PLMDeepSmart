@@ -1,11 +1,9 @@
 ###################################################################
-# 版权所有 2023 尊贵的幸福里业主
-#  适用于北区-130B
-# 
 # 使用方法
 #  HA中添加集成KNX
 #  configuration.yaml中添加 knx: !include <本文件名字>
 #  重启HA
+
 
 light:
     - name: "总控灯1"
@@ -81,94 +79,7 @@ switch:
       address: "14/1/1"
       state_address: "14/1/1"
 
-# 传感器的数据来源于新风
-# 实际测试表明传感器会频繁推送数据，占用大量带宽
-#
-#    - name: "二氧化碳"
-#      state_address: "6/2/81"
-#      type: 2byte_float
-#      sync_state: init
-#    - name: "TVOC"
-#      state_address: "6/3/81"
-#      type: 2byte_float
-#      sync_state: true
-#    - name: "PM2.5"
-#      state_address: "6/1/81"
-#      type: 2byte_float
-#      sync_state: true
-      
-sensor:
-    - name: "湿度"
-      state_address: "6/6/81"
-      type: 2byte_float
-      sync_state: true
-    - name: "温度"
-      state_address: "6/5/81"
-      type: 2byte_float
-      sync_state: true
-
 select:
-    - name: "客厅布帘"
-      address: "2/0/65"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "客厅纱帘"
-      address: "2/0/66"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "主卧布帘"
-      address: "2/0/67"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "主卧纱帘"
-      address: "2/0/68"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "次卧布帘"
-      address: "2/0/69"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "次卧纱帘"
-      address: "2/0/70"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-
     - name: "次卧空调风速"
       address: "12/3/1"
       state_address: "12/3/129"
@@ -276,3 +187,147 @@ climate:
       on_off_state_address: "12/1/133"
       controller_mode_address: "12/2/5"
       controller_mode_state_address: "12/2/133"
+
+button:
+    # 客厅面板
+    - name: "回家模式"
+      address: "0/0/17"
+      payload: 1
+    - name: "离家模式"
+      address: "0/0/17"
+      payload: 2
+
+
+covers:
+    living_room_curtain_main:
+        friendly_name: "客厅布帘"
+        unique_id: 'living_room_curtain_main'
+        open_cover:
+          service: knx.send
+          data:
+            address: 2/0/65
+            payload: 1
+            type: 1byte_signed
+        close_cover:
+          service: knx.send
+          data:
+            address: 2/0/65
+            payload: 2
+            type: 1byte_signed
+        stop_cover:
+          service: knx.send
+          data:
+            address: 2/0/65
+            payload: 0
+            type: 1byte_signed
+
+    living_room_curtain_secondary:
+        friendly_name: "客厅纱帘"
+        unique_id: 'living_room_curtain_secondary'
+        open_cover:
+          service: knx.send
+          data:
+            address: 2/0/66
+            payload: 1
+            type: 1byte_signed
+        close_cover:
+          service: knx.send
+          data:
+            address: 2/0/66
+            payload: 2
+            type: 1byte_signed
+        stop_cover:
+          service: knx.send
+          data:
+            address: 2/0/66
+            payload: 0
+            type: 1byte_signed
+
+    bedroom1_curtain_main:
+        friendly_name: "主卧布帘"
+        unique_id: 'bedroom1_curtain_main'
+        open_cover:
+          service: knx.send
+          data:
+            address: 2/0/67
+            payload: 1
+            type: 1byte_signed
+        close_cover:
+          service: knx.send
+          data:
+            address: 2/0/67
+            payload: 2
+            type: 1byte_signed
+        stop_cover:
+          service: knx.send
+          data:
+            address: 2/0/67
+            payload: 0
+            type: 1byte_signed
+
+    bedroom1_curtain_secondary:
+        friendly_name: "主卧纱帘"
+        unique_id: 'bedroom1_curtain_secondary'
+        open_cover:
+          service: knx.send
+          data:
+            address: 2/0/68
+            payload: 1
+            type: 1byte_signed
+        close_cover:
+          service: knx.send
+          data:
+            address: 2/0/68
+            payload: 2
+            type: 1byte_signed
+        stop_cover:
+          service: knx.send
+          data:
+            address: 2/0/68
+            payload: 0
+            type: 1byte_signed
+
+    bedroom2_curtain_main:
+        friendly_name: "次卧布帘"
+        unique_id: 'bedroom2_curtain_main'
+        open_cover:
+          service: knx.send
+          data:
+            address: 2/0/69
+            payload: 1
+            type: 1byte_signed
+        close_cover:
+          service: knx.send
+          data:
+            address: 2/0/69
+            payload: 2
+            type: 1byte_signed
+        stop_cover:
+          service: knx.send
+          data:
+            address: 2/0/69
+            payload: 0
+            type: 1byte_signed
+
+    bedroom2_curtain_secondary:
+        friendly_name: "次卧纱帘"
+        unique_id: 'bedroom2_curtain_secondary'
+        open_cover:
+          service: knx.send
+          data:
+            address: 2/0/70
+            payload: 1
+            type: 1byte_signed
+        close_cover:
+          service: knx.send
+          data:
+            address: 2/0/70
+            payload: 2
+            type: 1byte_signed
+        stop_cover:
+          service: knx.send
+          data:
+            address: 2/0/70
+            payload: 0
+            type: 1byte_signed
+      
