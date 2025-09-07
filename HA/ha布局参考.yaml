@@ -119,7 +119,7 @@ views:
           - entity: light.ke_ting_tong_deng
           - entity: button.da_kai_ke_ting_sha_lian
           - entity: button.guan_bi_ke_ting_sha_lian
-          - entity: climate.can_ting_kong_diao
+          - entity: climate.ke_ting_kong_diao
         show_header_toggle: true
         title: 客厅
       - type: entities
@@ -130,7 +130,7 @@ views:
           - entity: light.can_ting_tong_deng
           - entity: light.xuan_guan_deng_dai
           - entity: light.xuan_guan_tong_deng
-          - entity: climate.zhu_wo_kong_diao
+          - entity: climate.can_ting_kong_diao
         title: 玄关和餐厅
         state_color: false
       - type: entities
@@ -142,7 +142,9 @@ views:
           - entity: button.guan_bi_zhu_wo_bu_lian
           - entity: button.da_kai_zhu_wo_sha_lian
           - entity: button.guan_bi_zhu_wo_sha_lian
-          - entity: climate.ci_wo_kong_diao
+          - entity: light.zhu_wei_tong_deng
+          - entity: light.zhu_wei_deng_dai_deng
+          - entity: climate.zhu_wo_kong_diao
         show_header_toggle: true
         title: 主卧
       - type: entities
@@ -154,13 +156,13 @@ views:
           - entity: button.da_kai_ci_wo_sha_lian
           - entity: button.guan_bi_ci_wo_bu_lian
           - entity: button.guan_bi_ci_wo_sha_lian
-          - entity: climate.er_tong_fang_kong_diao
+          - entity: climate.ci_wo_kong_diao
         show_header_toggle: true
         title: 次卧
       - type: entities
         entities:
-          - entity: climate.duo_gong_neng_fang_kong_diao
-          - entity: climate.ke_ting_kong_diao
+          - entity: climate.er_tong_fang_kong_diao
+          - entity: climate.shu_fang_kong_diao
         show_header_toggle: true
         title: 儿童房和书房
       - show_name: true
@@ -179,6 +181,10 @@ views:
           - type: vertical-stack
             cards:
               - type: thermostat
+                entity: climate.ke_ting_kong_diao
+                features:
+                  - type: climate-hvac-modes
+              - type: thermostat
                 entity: climate.can_ting_kong_diao
                 features:
                   - type: climate-hvac-modes
@@ -186,22 +192,18 @@ views:
                 entity: climate.zhu_wo_kong_diao
                 features:
                   - type: climate-hvac-modes
+          - type: vertical-stack
+            cards:
               - type: thermostat
                 entity: climate.ci_wo_kong_diao
                 features:
                   - type: climate-hvac-modes
-          - type: vertical-stack
-            cards:
               - type: thermostat
                 entity: climate.er_tong_fang_kong_diao
                 features:
                   - type: climate-hvac-modes
               - type: thermostat
-                entity: climate.duo_gong_neng_fang_kong_diao
-                features:
-                  - type: climate-hvac-modes
-              - type: thermostat
-                entity: climate.ke_ting_kong_diao
+                entity: climate.shu_fang_kong_diao
                 features:
                   - type: climate-hvac-modes
         grid_options:
