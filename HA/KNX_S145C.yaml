@@ -54,200 +54,117 @@ light:
       address: "1/0/24"
       state_address: "1/0/24"
 
-
 fan:
     - name: "新风风速"
       address: "14/1/3"
       state_address: "14/1/3"
       max_step: 3
 
-
 switch:
     - name: "新风开关"
       address: "14/1/1"
       state_address: "14/1/1"
 
-
 # 传感器的数据来源于新风
 sensor:
     - name: "湿度"
-      state_address: "6/5/81"
-      type: 2byte_float
-      sync_state: every 30
-    - name: "温度"
       state_address: "6/6/81"
       type: 2byte_float
-      sync_state: every 30
+      sync_state: every 180
+    - name: "温度"
+      state_address: "6/5/81"
+      type: 2byte_float
+      sync_state: every 180
     - name: "TVOC"
       state_address: "6/3/81"
       type: 2byte_float
-      sync_state: every 30
+      sync_state: every 180
     - name: "二氧化碳"
       state_address: "6/2/81"
       type: 2byte_float
-      sync_state: every 30
+      sync_state: every 180
     - name: "PM2.5"
       state_address: "6/1/81"
       type: 2byte_float
-      sync_state: every 30
-
-select:
-    - name: "回家离家模式"
-      address: "0/0/17"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "关"
-          payload: 2
-    - name: "客厅布帘"
-      address: "2/0/65"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "客厅纱帘"
-      address: "2/0/66"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "主卧布帘"
-      address: "2/0/68"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "主卧纱帘"
-      address: "2/0/67"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "次卧纱帘"
-      address: "2/0/70"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "次卧布帘"
-      address: "2/0/69"
-      payload_length: 1
-      options:
-        - option: "开"
-          payload: 1
-        - option: "合"
-          payload: 2
-        - option: "停"
-          payload: 0
-    - name: "主卧空调风速"
-      address: "12/3/3"
-      state_address: "12/3/131"
-      payload_length: 1
-      options:
-        - option: "自动"
-          payload: 0
-        - option: "低"
-          payload: 1
-        - option: "中"
-          payload: 3
-        - option: "高"
-          payload: 5
-    - name: "儿童房空调风速"
-      address: "12/3/5"
-      state_address: "12/3/133"
-      payload_length: 1
-      options:
-        - option: "自动"
-          payload: 0
-        - option: "低"
-          payload: 1
-        - option: "中"
-          payload: 3
-        - option: "高"
-          payload: 5
-    - name: "书房空调风速"
-      address: "12/3/6"
-      state_address: "12/3/134"
-      payload_length: 1
-      options:
-        - option: "自动"
-          payload: 0
-        - option: "低"
-          payload: 1
-        - option: "中"
-          payload: 3
-        - option: "高"
-          payload: 5
-    - name: " 客厅空调风速"
-      address: "12/3/1"
-      state_address: "12/3/129"
-      payload_length: 1
-      options:
-        - option: "自动"
-          payload: 0
-        - option: "低"
-          payload: 1
-        - option: "中"
-          payload: 3
-        - option: "高"
-          payload: 5
-    - name: "餐厅空调风速"
-      address: "12/3/2"
-      state_address: "12/3/130"
-      payload_length: 1
-      options:
-        - option: "自动"
-          payload: 0
-        - option: "低"
-          payload: 1
-        - option: "中"
-          payload: 3
-        - option: "高"
-          payload: 5
-    - name: "次卧空调风速"
-      address: "12/3/4"
-      state_address: "12/3/132"
-      payload_length: 1
-      options:
-        - option: "自动"
-          payload: 0
-        - option: "低"
-          payload: 1
-        - option: "中"
-          payload: 3
-        - option: "高"
-          payload: 5
-
-#按键不知道怎么用
+      sync_state: every 180
 
 button:
-    - name: "玄关按键"
+    - name: "打开次卧布帘"
+      address: "2/0/69"
+      payload_length: 1
+      payload: 1
+    - name: "关闭次卧布帘"
+      address: "2/0/69"
+      payload_length: 1
+      payload: 2
+    - name: "停止次卧布帘"
+      address: "2/0/69"
+      payload_length: 1
+      payload: 0
+    - name: "打开次卧纱帘"
+      address: "2/0/70"
+      payload_length: 1
+      payload: 1
+    - name: "关闭次卧纱帘"
+      address: "2/0/70"
+      payload_length: 1
+      payload: 2
+    - name: "停止次卧纱帘"
+      address: "2/0/70"
+      payload_length: 1
+      payload: 0
+    - name: "打开主卧布帘"
+      address: "2/0/68"
+      payload_length: 1
+      payload: 1
+    - name: "关闭主卧布帘"
+      address: "2/0/68"
+      payload_length: 1
+      payload: 2
+    - name: "停止主卧布帘"
+      address: "2/0/68"
+      payload_length: 1
+      payload: 0
+    - name: "打开主卧纱帘"
+      address: "2/0/67"
+      payload_length: 1
+      payload: 1
+    - name: "关闭主卧纱帘"
+      address: "2/0/67"
+      payload_length: 1
+      payload: 2
+    - name: "停止主卧纱帘"
+      address: "2/0/67"
+      payload_length: 1
+      payload: 0
+    - name: "打开客厅纱帘"
+      address: "2/0/66"
+      payload_length: 1
+      payload: 1
+    - name: "关闭客厅纱帘"
+      address: "2/0/66"
+      payload_length: 1
+      payload: 2
+    - name: "停止客厅纱帘"
+      address: "2/0/66"
+      payload_length: 1
+      payload: 0
+    - name: "回家模式"
       address: "0/0/17"
-    - name: "主卧按键"
+      payload_length: 1
+      payload: 1
+    - name: "离家模式"
+      address: "0/0/17"
+      payload_length: 1
+      payload: 2
+    - name: "主卧明亮"
       address: "0/0/18"
-
-# 开发商的空调的风速控制不是KNX标准的，因此挪到select实体
+      payload_length: 1
+      payload: 1
+    - name: "主卧关灯"
+      address: "0/0/18"
+      payload_length: 1
+      payload: 2
 
 climate:
     - name: "主卧空调"
@@ -258,6 +175,17 @@ climate:
       on_off_state_address: "12/1/131"
       controller_mode_address: "12/2/3"
       controller_mode_state_address: "12/2/131"
+      fan_speed_address: "12/3/3"
+      fan_speed_state_address: "12/3/131"
+      fan_max_step: 5
+      fan_speed_mode: "step"
+      fan_zero_mode: "auto"
+      temperature_step: 1.0
+      controller_modes:
+        - "off"
+        - "auto"
+        - "heat"
+        - "cool"
     - name: "儿童房空调"
       temperature_address: "12/5/133"
       target_temperature_address: "12/4/5"
@@ -266,6 +194,17 @@ climate:
       on_off_state_address: "12/1/133"
       controller_mode_address: "12/2/5"
       controller_mode_state_address: "12/2/133"
+      fan_speed_address: "12/3/5"
+      fan_speed_state_address: "12/3/133"
+      fan_max_step: 5
+      fan_speed_mode: "step"
+      fan_zero_mode: "auto"
+      temperature_step: 1.0
+      controller_modes:
+        - "off"
+        - "auto"
+        - "heat"
+        - "cool"
     - name: "书房空调"
       temperature_address: "12/5/134"
       target_temperature_address: "12/4/6"
@@ -274,6 +213,17 @@ climate:
       on_off_state_address: "12/1/134"
       controller_mode_address: "12/2/6"
       controller_mode_state_address: "12/2/134"
+      fan_speed_address: "12/3/6"
+      fan_speed_state_address: "12/3/134"
+      fan_max_step: 5
+      fan_speed_mode: "step"
+      fan_zero_mode: "auto"
+      temperature_step: 1.0
+      controller_modes:
+        - "off"
+        - "auto"
+        - "heat"
+        - "cool"
     - name: "餐厅空调"
       temperature_address: "12/5/130"
       target_temperature_address: "12/4/2"
@@ -282,6 +232,17 @@ climate:
       on_off_state_address: "12/1/130"
       controller_mode_address: "12/2/2"
       controller_mode_state_address: "12/2/130"
+      fan_speed_address: "12/3/2"
+      fan_speed_state_address: "12/3/130"
+      fan_max_step: 5
+      fan_speed_mode: "step"
+      fan_zero_mode: "auto"
+      temperature_step: 1.0
+      controller_modes:
+        - "off"
+        - "auto"
+        - "heat"
+        - "cool"
     - name: "客厅空调"
       temperature_address: "12/5/129"
       target_temperature_address: "12/4/1"
@@ -290,6 +251,17 @@ climate:
       on_off_state_address: "12/1/129"
       controller_mode_address: "12/2/1"
       controller_mode_state_address: "12/2/129"
+      fan_speed_address: "12/3/1"
+      fan_speed_state_address: "12/3/129"
+      fan_max_step: 5
+      fan_speed_mode: "step"
+      fan_zero_mode: "auto"
+      temperature_step: 1.0
+      controller_modes:
+        - "off"
+        - "auto"
+        - "heat"
+        - "cool"
     - name: "次卧空调"
       temperature_address: "12/5/132"
       target_temperature_address: "12/4/4"
@@ -298,4 +270,14 @@ climate:
       on_off_state_address: "12/1/132"
       controller_mode_address: "12/2/4"
       controller_mode_state_address: "12/2/132"
-  
+      fan_speed_address: "12/3/4"
+      fan_speed_state_address: "12/3/132"
+      fan_max_step: 5
+      fan_speed_mode: "step"
+      fan_zero_mode: "auto"
+      temperature_step: 1.0
+      controller_modes:
+        - "off"
+        - "auto"
+        - "heat"
+        - "cool"
