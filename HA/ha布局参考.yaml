@@ -1,0 +1,210 @@
+views:
+  - title: Home
+    cards: []
+    type: sections
+    sections:
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: light.ke_ting_zhu_deng
+              - entity: light.ke_ting_deng_dai_deng
+              - entity: light.ke_ting_tong_deng
+              - entity: button.da_kai_ke_ting_sha_lian
+              - entity: button.guan_bi_ke_ting_sha_lian
+              - entity: climate.can_ting_kong_diao
+            show_header_toggle: true
+            title: 客厅
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: button.xuan_guan_an_jian
+              - entity: button.xuan_guan_an_jian
+              - entity: light.can_ting_zhu_deng
+              - entity: light.can_ting_tong_deng
+              - entity: light.xuan_guan_deng_dai
+              - entity: light.xuan_guan_tong_deng
+              - entity: climate.zhu_wo_kong_diao
+            title: 玄关和餐厅
+            state_color: false
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: button.da_kai_ke_ting_sha_lian
+                icon: mdi:curtains
+              - entity: button.da_kai_zhu_wo_bu_lian
+                icon: mdi:curtains
+              - entity: button.da_kai_zhu_wo_sha_lian
+              - entity: button.da_kai_ci_wo_bu_lian
+              - entity: button.da_kai_ci_wo_sha_lian
+            show_header_toggle: false
+            state_color: false
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: button.guan_bi_ke_ting_sha_lian
+              - entity: button.guan_bi_zhu_wo_bu_lian
+              - entity: button.guan_bi_zhu_wo_sha_lian
+              - entity: button.guan_bi_ci_wo_bu_lian
+              - entity: button.guan_bi_ci_wo_sha_lian
+      - type: grid
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: thermostat
+                    entity: climate.can_ting_kong_diao
+                    features:
+                      - type: climate-hvac-modes
+                  - type: thermostat
+                    entity: climate.zhu_wo_kong_diao
+                    features:
+                      - type: climate-hvac-modes
+                  - type: thermostat
+                    entity: climate.ci_wo_kong_diao
+                    features:
+                      - type: climate-hvac-modes
+              - type: vertical-stack
+                cards:
+                  - type: thermostat
+                    entity: climate.er_tong_fang_kong_diao
+                    features:
+                      - type: climate-hvac-modes
+                  - type: thermostat
+                    entity: climate.duo_gong_neng_fang_kong_diao
+                    features:
+                      - type: climate-hvac-modes
+                  - type: thermostat
+                    entity: climate.ke_ting_kong_diao
+                    features:
+                      - type: climate-hvac-modes
+            grid_options:
+              rows: 8
+              columns: full
+        column_span: 4
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: button.zhu_wo_an_jian
+              - entity: button.zhu_wo_guan_deng
+              - entity: light.zhu_wo_zhu_deng
+              - entity: light.zhu_wo_tong_deng
+              - entity: light.zhu_wo_deng_dai_deng
+              - entity: button.da_kai_zhu_wo_bu_lian
+              - entity: button.guan_bi_zhu_wo_bu_lian
+              - entity: button.da_kai_zhu_wo_sha_lian
+              - entity: button.guan_bi_zhu_wo_sha_lian
+              - entity: climate.ci_wo_kong_diao
+            show_header_toggle: true
+            title: 主卧
+    header:
+      layout: responsive
+      badges_position: bottom
+      badges_wrap: wrap
+    max_columns: 4
+    dense_section_placement: true
+    visible: []
+  - type: masonry
+    path: ''
+    cards:
+      - type: entities
+        entities:
+          - entity: light.ke_ting_zhu_deng
+          - entity: light.ke_ting_deng_dai_deng
+          - entity: light.ke_ting_tong_deng
+          - entity: button.da_kai_ke_ting_sha_lian
+          - entity: button.guan_bi_ke_ting_sha_lian
+          - entity: climate.can_ting_kong_diao
+        show_header_toggle: true
+        title: 客厅
+      - type: entities
+        entities:
+          - entity: button.xuan_guan_an_jian
+          - entity: button.chi_jia_mo_shi
+          - entity: light.can_ting_zhu_deng
+          - entity: light.can_ting_tong_deng
+          - entity: light.xuan_guan_deng_dai
+          - entity: light.xuan_guan_tong_deng
+          - entity: climate.zhu_wo_kong_diao
+        title: 玄关和餐厅
+        state_color: false
+      - type: entities
+        entities:
+          - entity: light.zhu_wo_zhu_deng
+          - entity: light.zhu_wo_tong_deng
+          - entity: light.zhu_wo_deng_dai_deng
+          - entity: button.da_kai_zhu_wo_bu_lian
+          - entity: button.guan_bi_zhu_wo_bu_lian
+          - entity: button.da_kai_zhu_wo_sha_lian
+          - entity: button.guan_bi_zhu_wo_sha_lian
+          - entity: climate.ci_wo_kong_diao
+        show_header_toggle: true
+        title: 主卧
+      - type: entities
+        entities:
+          - entity: light.ci_wo_zhu_deng
+          - entity: light.ci_wo_deng_dai_deng
+          - entity: light.ci_wo_tong_deng
+          - entity: button.da_kai_ci_wo_bu_lian
+          - entity: button.da_kai_ci_wo_sha_lian
+          - entity: button.guan_bi_ci_wo_bu_lian
+          - entity: button.guan_bi_ci_wo_sha_lian
+          - entity: climate.er_tong_fang_kong_diao
+        show_header_toggle: true
+        title: 次卧
+      - type: entities
+        entities:
+          - entity: climate.duo_gong_neng_fang_kong_diao
+          - entity: climate.ke_ting_kong_diao
+        show_header_toggle: true
+        title: 儿童房和书房
+      - show_name: true
+        show_icon: true
+        show_state: true
+        type: glance
+        entities:
+          - entity: sensor.er_yang_hua_tan
+          - entity: sensor.wen_du
+          - entity: sensor.shi_du
+          - entity: sensor.pm2_5
+          - entity: sensor.tvoc
+        columns: 3
+      - type: horizontal-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: thermostat
+                entity: climate.can_ting_kong_diao
+                features:
+                  - type: climate-hvac-modes
+              - type: thermostat
+                entity: climate.zhu_wo_kong_diao
+                features:
+                  - type: climate-hvac-modes
+              - type: thermostat
+                entity: climate.ci_wo_kong_diao
+                features:
+                  - type: climate-hvac-modes
+          - type: vertical-stack
+            cards:
+              - type: thermostat
+                entity: climate.er_tong_fang_kong_diao
+                features:
+                  - type: climate-hvac-modes
+              - type: thermostat
+                entity: climate.duo_gong_neng_fang_kong_diao
+                features:
+                  - type: climate-hvac-modes
+              - type: thermostat
+                entity: climate.ke_ting_kong_diao
+                features:
+                  - type: climate-hvac-modes
+        grid_options:
+          rows: 8
+          columns: full
+    title: HOME
